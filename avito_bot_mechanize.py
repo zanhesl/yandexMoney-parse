@@ -15,6 +15,7 @@ def get_html(br):
 	data = r.read()
 	return data
 
+
 def get_page_data(html):
 	soup = BeautifulSoup(html, 'lxml')
 	balance = 'empty'
@@ -22,9 +23,9 @@ def get_page_data(html):
 		balance = soup.find('span', class_='price__whole-amount text text_size_xxxxl text_view_primary text_weight_regular').text.strip()
 	except Exception as e:
 		print('No connection')
-	
+
 	return balance
-	
+
 def open_acc(login, password, number):
 	# Browser
 	br = mechanize.Browser()
@@ -62,12 +63,12 @@ def open_acc(login, password, number):
 		br.submit()
 	except Exception as es:
 		pass
-		
-	
+
+
 
 	return get_page_data(get_html(br))
 
-	
+
 
 
 
@@ -77,7 +78,7 @@ def main():
 	for user in usernames:
 		user = user.split()
 		print(open_acc(user[0], user[1], user[2]), ' rub ------', user[0])
-		
+
 	# open_acc(br, 'd0lgoffsan@yandex.ru', 'zor767in')
 
 
